@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Departemen Statistika</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>HIMPUNAN STATISTIKA</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -17,7 +17,13 @@
     --card-bg: #13131e;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    .social-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   html { scroll-behavior: smooth; }
 
@@ -27,64 +33,54 @@
     color: var(--white);
     overflow-x: hidden;
   }
-
-  /* ── LOGO FIXED (di luar navbar) ── */
-  /* ── LOGO HIMASTA (atur posisi di sini) ── */
-  .logo-himasta {
-    position: fixed;
-    top: 10px;   /* ← jarak dari atas */
-    right: 20px; /* ← jarak dari kanan */
-    z-index: 101;
-  }
-  .logo-himasta img {
-    height: 80px; /* ← ukuran logo himasta */
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  /* ── LOGO USK (atur posisi di sini) ── */
-  .logo-usk-wrap {
-    position: fixed;
-    top: 12px;   /* ← jarak dari atas */
-    right: 120px;  /* ← jarak dari kanan */
-    z-index: 101;
-  }
-  .logo-usk-wrap img {
-    height: 80px; /* ← ukuran logo usk */
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  .logo-fixed .logo-divider {
-    width: 1px;
-    height: 28px;
-    background: rgba(255,255,255,0.3);
-  }
-
-  /* ── NAVBAR ── */
+/* ── CORNER LOGOS ── */
+.corner-logos {
+  position: absolute ;
+  top: 20px;
+  left: 20px;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.corner-logos img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  transition: transform 0.2s;
+}
+.corner-logos img:hover {
+  transform: scale(1.08);
+}
+.corner-logos .logo-sep {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+}
+  /* ── NAVBAR (DESKTOP) ── */
   nav {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 100;
-    background: rgba(20, 20, 30, 0.85);
-    backdrop-filter: blur(20px);
+    z-index: 200;
+    background: rgba(20, 20, 30, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 50px;
-    padding: 14px 32px;
+    padding: 8px 32px;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 20px;
     border: 1px solid rgba(255,255,255,0.08);
-    width: fit-content;
+    min-width: auto;
+    transition: top 0.3s, box-shadow 0.3s;
   }
 
   .logo-wrap {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
     flex-shrink: 0;
   }
@@ -158,23 +154,109 @@
     box-shadow: 0 0 22px rgba(232,49,90,0.5) !important;
   }
 
+  /* ── MOBILE NAV ── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 400;
+    background: rgba(13,13,20,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 0 16px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mobile-logo img { height: 34px; width: auto; }
+  .mobile-logo-divider {
+    width: 1px; height: 18px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .hamburger {
+    width: 38px; height: 38px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+  }
+  .hamburger span {
+    display: block;
+    width: 18px; height: 1.5px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    z-index: 399;
+    background: rgba(13,13,20,0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 16px;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 10px;
+    opacity: 0.85;
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover, .mobile-menu a:active { background: rgba(255,255,255,0.05); opacity: 1; }
+  .mobile-menu .m-competition {
+    margin-top: 8px;
+    background: linear-gradient(135deg, var(--accent), #c0183a);
+    opacity: 1;
+    justify-content: center;
+    font-weight: 600;
+    border: 1.5px solid rgba(232,49,90,0.4);
+    box-shadow: 0 0 18px rgba(232,49,90,0.25);
+  }
+
   /* ── HERO ── */
   #hero {
     position: relative;
     height: 100vh;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
+    padding: 0 20px;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 50%, rgba(10,10,15,1) 100%),
-      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80') center/cover no-repeat;
+      url('IMG_E5559.JPG') center/cover no-repeat;
     z-index: 0;
   }
 
@@ -182,7 +264,7 @@
 
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 148px);
+    font-size: clamp(48px, 10vw, 148px);
     line-height: 0.95;
     letter-spacing: 2px;
     text-shadow: 0 4px 40px rgba(0,0,0,0.6);
@@ -190,7 +272,7 @@
   }
 
   .hero-sub {
-    font-size: 18px;
+    font-size: clamp(14px, 3.5vw, 18px);
     font-weight: 400;
     color: rgba(255,255,255,0.85);
     margin-top: 16px;
@@ -201,9 +283,10 @@
 
   .hero-socials {
     display: flex;
-    gap: 28px;
+    gap: 20px;
     margin-top: 28px;
     justify-content: center;
+    flex-wrap: wrap;
     animation: fadeUp 0.9s 0.35s ease both;
   }
   .social-link {
@@ -215,11 +298,15 @@
     font-size: 14px;
     font-weight: 500;
     transition: color 0.2s;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 8px 16px 8px 8px;
   }
-  .social-link:hover { color: var(--accent2); }
+  .social-link:hover { color: var(--accent2); border-color: rgba(232,49,90,0.4); }
   .social-icon {
     width: 32px; height: 32px;
-    border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 13px;
@@ -274,7 +361,7 @@
 
   .about-heading {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 6vw, 88px);
+    font-size: clamp(42px, 6vw, 88px);
     line-height: 0.95;
     margin-bottom: 28px;
   }
@@ -318,7 +405,7 @@
   }
 
   .card-icon {
-    width: 52px; height: 52px;
+    width: 70px; height: 70px;
     background: rgba(232,49,90,0.12);
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
@@ -362,7 +449,7 @@
 
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 5vw, 72px);
+    font-size: clamp(40px, 5vw, 72px);
     line-height: 1;
   }
 
@@ -537,33 +624,119 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { min-width: unset; width: 92vw; gap: 24px; padding: 12px 20px; }
-    #about { grid-template-columns: 1fr; gap: 48px; }
-    .divisi-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 20px; text-align: center; }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
+    /* Hide desktop nav, show mobile */
+    nav { display: none !important; }
+    .mobile-nav { display: flex; }
+
+    /* Hero */
+    #hero { padding: 80px 20px 40px; min-height: 100svh; }
+    .hero-title { letter-spacing: 1px; }
+    .hero-socials { gap: 10px; }
+    .social-link { font-size: 13px; padding: 6px 12px 6px 6px; }
+    .social-icon { width: 28px; height: 28px; font-size: 12px; }
+
+    /* Ticker */
+    .ticker-item { font-size: 13px; }
+
+    /* About */
+    #about {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 72px 20px;
+    }
+    .about-body { font-size: 15px; max-width: 100%; }
+
+    /* Service cards */
+    .service-card { padding: 20px; }
+    .card-title { font-size: 17px; }
+    
+    /* Divisi */
+    #divisi { padding: 72px 20px; }
+    .section-header { margin-bottom: 40px; }
+    .section-sub { font-size: 14px; }
+
+    .divisi-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .divisi-card {
+      border-radius: 18px;
+      display: flex;
+      flex-direction: row;
+      overflow: hidden;
+    }
+    .divisi-banner {
+      width: 110px;
+      height: auto;
+      min-height: 120px;
+      flex-shrink: 0;
+      border-radius: 0;
+    }
+    .divisi-icon-wrap {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      font-size: 26px;
+    }
+    .divisi-info { padding: 16px; flex: 1; min-width: 0; }
+    .divisi-name { font-size: 16px; margin-bottom: 6px; }
+    .divisi-desc { font-size: 12px; line-height: 1.55; margin-bottom: 12px; 
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .divisi-tag { margin-bottom: 4px; }
+    .divisi-pill { font-size: 11px; padding: 4px 12px; }
+
+    /* Footer */
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px 60px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .footer-brand { font-size: 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(38px, 12vw, 72px); }
+    .hero-sub { font-size: 14px; }
+    .about-heading { font-size: clamp(36px, 10vw, 56px); }
+    .divisi-banner { width: 90px; min-height: 100px; }
+    .divisi-icon-wrap { width: 46px; height: 46px; font-size: 22px; }
+    /* Edit posisi logo khusus mobile di sini */
+    .corner-logos img { height: 48px; }
+    .corner-logos { top: 60px; left: 0px; gap: 7px; }
   }
 </style>
 </head>
 <body>
-
-<!-- LOGO (terpisah dari navbar) -->
-<div class="logo-himasta">
-  <img src="LOGO HIMASTA.png" alt="Statistika">
+<!-- ── CORNER LOGOS (Fixed, pojok kiri atas) ── -->
+<div class="corner-logos">
+  <img src="LOGO HIMASTA.png" alt="Logo Himasta">
+  <div class="logo-sep"></div>
+  <img src="LOGO USK.png" alt="Logo USK">
+</div>
+<!-- ── MOBILE NAV ── -->
+<div class="mobile-nav">
+  <div class="mobile-logo">
+    <img src="Kabinet_warna.png" alt="Visionary">
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
 
-<div class="logo-usk-wrap">
-  <img src="LOGO USK.png" alt="Unsyiah">
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About Us</a>
+  <a href="#" onclick="closeMenu()">Media ▾</a>
+  <a href="#divisi" onclick="closeMenu()">Proker ▾</a>
 </div>
 
-<!-- NAVBAR -->
+
+<!-- ── DESKTOP NAVBAR ── -->
 <nav>
+  <div class="logo-wrap">
+    <img src="Kabinet_warna.png" alt="Statistika" style="height:42px;width:auto;">
+  </div>
   <ul class="nav-links">
     <li><a href="#about">About Us</a></li>
-    <li><a href="#">Article</a></li>
     <li><a href="#">Media <span class="chevron">▾</span></a></li>
-    <li><a href="#divisi">Teams <span class="chevron">▾</span></a></li>
-    <li><a href="#" class="nav-competition">Competition <span style="font-size:11px">🏆</span></a></li>
+    <li><a href="#divisi">Proker <span class="chevron">▾</span></a></li>
   </ul>
 </nav>
 
@@ -571,29 +744,36 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 class="hero-title">DEPARTEMEN STATISTIKA</h1>
-    <p class="hero-sub">Statistika Satu untuk Bangsaku</p>
+    <h1 class="hero-title">HIMPUNAN STATISTIKA</h1>
+    <p class="hero-sub">KABINET VISIONARY</p>
     <div class="hero-socials">
-      <a href="#" class="social-link">
-        <div class="social-icon">📷</div>
+      <a href="https://www.instagram.com/himasta.fmipausk/" class="social-link">
+        <div class="social-icon">
+          <img src="logo instagram.png" alt="Instagram">
+        </div>
         Instagram
       </a>
-      <a href="#" class="social-link">
-        <div class="social-icon">▶</div>
+      <a href="https://www.youtube.com/@himastausk718" class="social-link">
+        <div class="social-icon">
+          <img src="logo youtube.png" alt="Youtube">
+        </div>
         Youtube
       </a>
-      <a href="#" class="social-link">
-        <div class="social-icon">♪</div>
+      <a href="https://www.tiktok.com/@himasta.fmipausk?is_from_webapp=1&sender_device=pc" class="social-link">
+        <div class="social-icon">
+          <img src="logo tiktok.png" alt="TikTok">
+        </div>
         TikTok
       </a>
-      <a href="#" class="social-link">
-        <div class="social-icon">in</div>
+      <a href="https://www.linkedin.com/company/himasta-usk/?originalSubdomain=id" class="social-link">
+        <div class="social-icon">
+          <img src="logo linkedin.png" alt="LinkedIn">
+        </div>
         LinkedIn
       </a>
     </div>
   </div>
 </section>
-
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
@@ -605,12 +785,12 @@
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Sosial Kemasyarakatan</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">Kreatifitas & Inovasi</div>
-    <div class="ticker-item">✦</div>
     <div class="ticker-item">OSM</div>
     <div class="ticker-item">✦</div>
+    <div class="ticker-item">HUAL</div>
+    <div class="ticker-item">✦</div>
     <!-- duplicate for seamless loop -->
-    <div class="ticker-item">Kesejahteraan Mahasiswa</div>
+    <div class="ticker-item">Komunikasi & Informasi</div>
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Sains & Statistika</div>
     <div class="ticker-item">✦</div>
@@ -618,9 +798,10 @@
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Sosial Kemasyarakatan</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">Kreatifitas & Inovasi</div>
-    <div class="ticker-item">✦</div>
     <div class="ticker-item">OSM</div>
+    <div class="ticker-item">✦</div>
+    <div class="ticker-item">HUAL</div>
+    <div class="ticker-item">✦</div>
   </div>
 </div>
 
@@ -628,30 +809,30 @@
 <section id="about">
   <div class="about-left reveal">
     <div class="section-eyebrow">About Us</div>
-    <h2 class="about-heading">Apa itu Dept. Statistika Unsyiah?</h2>
+    <h2 class="about-heading">Apa itu Kabinet Visionary?</h2>
     <p class="about-body">
-      Departemen Statistika Universitas Syiah Kuala merupakan wadah bagi mahasiswa dalam mengembangkan potensi akademik, organisasi, dan kepemimpinan. Melalui berbagai kegiatan kemahasiswaan, kami berkomitmen untuk mencetak generasi statistikawan yang tidak hanya unggul secara intelektual, tetapi juga aktif berkontribusi bagi masyarakat dan bangsa.
+      Kabinet Visionary adalah kabinet yang dibangun atas keyakinan bahwa kepemimpinan tidak hanya berorientasi pada kondisi saat ini, tetapi juga pada kemampuan membaca, merancang, dan mewujudkan masa depan. Istilah Visionary merepresentasikan suatu cara pandang yang melampaui batas waktu — tidak berhenti pada apa yang ada, tetapi berfokus pada apa yang dapat diciptakan.
     </p>
   </div>
 
   <div class="about-right reveal" style="transition-delay:0.15s">
     <div class="service-card">
-      <div class="card-icon">🤝</div>
+      <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       <div class="card-arrow">›</div>
-      <div class="card-title">Kesejahteraan Mahasiswa</div>
-      <div class="card-desc">Menjaga keharmonisan dan kesejahteraan seluruh anggota agar tumbuh bersama dalam ekosistem yang sehat</div>
+      <div class="card-title">Pandangan ke depan</div>
+      <div class="card-desc">Kemampuan untuk mengidentifikasi peluang, merumuskan arah, dan menetapkan visi yang jelas sebagai landasan pergerakan.</div>
     </div>
     <div class="service-card">
-      <div class="card-icon">📊</div>
+      <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       <div class="card-arrow">›</div>
-      <div class="card-title">Sains & Statistika</div>
-      <div class="card-desc">Mengolah data dan riset berbasis sains untuk mendukung pengambilan keputusan strategis organisasi</div>
+      <div class="card-title">Keberanian untuk berinovasi</div>
+      <div class="card-desc">Komitmen untuk menghadirkan pembaruan, mengambil pendekatan yang berbeda, serta berani keluar dari pola konvensional.</div>
     </div>
     <div class="service-card">
-      <div class="card-icon">📋</div>
+      <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       <div class="card-arrow">›</div>
-      <div class="card-title">Kesekretariatan</div>
-      <div class="card-desc">Tulang punggung administrasi dan dokumentasi resmi yang menjaga sistem kerja tetap rapi dan terstruktur</div>
+      <div class="card-title">Aksi yang berdampak</div>
+      <div class="card-desc">Perwujudan visi melalui langkah nyata yang terukur, sistematis, dan berorientasi pada hasil yang berkelanjutan.</div>
     </div>
   </div>
 </section>
@@ -659,9 +840,9 @@
 <!-- DIVISI -->
 <section id="divisi">
   <div class="section-header reveal">
-    <div class="section-eyebrow">Struktur Organisasi</div>
-    <h2 class="section-title">Divisi Kami</h2>
-    <p class="section-sub">Tim yang solid di balik setiap kegitan Himpunan Mahasiswa Statistika</p>
+    <div class="section-eyebrow">Program Kerja Kabinet Visionary</div>
+    <h2 class="section-title">Program Kerja Kami</h2>
+    <p class="section-sub">Aspiratif, Inovatif, dan Memberi Dampak</p>
   </div>
 
   <div class="divisi-grid">
@@ -669,137 +850,142 @@
     <!-- KESMA -->
     <div class="divisi-card reveal" style="transition-delay:0.1s">
       <div class="divisi-banner kesma">
-        <div class="divisi-icon-wrap">🤝</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Kesejahteraan Mahasiswa</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Awardee Talk</div>
         <div class="divisi-desc">
-          Divisi KESMA berperan dalam menjaga keharmonisan dan kesejahteraan seluruh anggota tim. Memastikan setiap anggota merasa dihargai, didukung, dan berkembang bersama dalam satu ekosistem yang sehat.
+          Kegiatan edukatif yang dirancang sebagai wadah berbagi informasi dan pengalaman seputar dunia beasiswa. Kegiatan ini bertujuan untuk memberikan gambaran nyata kepada peserta mengenai proses, tantangan, serta strategi dalam meraih berbagai jenis beasiswa, khususnya bagi mahasiswa yang ingin mempersiapkan diri sejak dini.
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
     <!-- SS -->
     <div class="divisi-card reveal" style="transition-delay:0.2s">
       <div class="divisi-banner ss">
-        <div class="divisi-icon-wrap">📊</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Sains & Statistika</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Pengurus of the month</div>
         <div class="divisi-desc">
-          Divisi SS mengelola data, analisis performa konten, dan riset berbasis sains untuk mendukung pengambilan keputusan strategis tim media. Mengubah angka menjadi insight yang bermakna.
+          Pengurus of the month itu apresiasi terhadap siapa yg paling aktif dalam sebulan di himasta. Baik ikut kepanitiaan sebagai anggota atau pj, maupun aktif ikut sebagai peserta. Termasuk yg sering komentar di sosmed himasta
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
     <!-- KESTARI -->
     <div class="divisi-card reveal" style="transition-delay:0.3s">
       <div class="divisi-banner kestari">
-        <div class="divisi-icon-wrap">📋</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Kesekretariatan</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Bank soal</div>
         <div class="divisi-desc">
-          Divisi KESTARI menangani administrasi, dokumentasi resmi, serta koordinasi internal organisasi. Tulang punggung sistem kerja yang rapi dan terstruktur di balik layar.
+          -
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <a href="https://drive.google.com/drive/folders/140obHVyQargiPtdmHmRMOTgE4cJMgxP0" target="_blank" class="divisi-pill">Lihat Kinerja →</a>
       </div>
     </div>
 
     <!-- SOSMAS -->
     <div class="divisi-card reveal" style="transition-delay:0.4s">
       <div class="divisi-banner sosmas">
-        <div class="divisi-icon-wrap">🤲</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Sosial Kemasyarakatan</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Referensi lomba</div>
         <div class="divisi-desc">
-          Divisi SOSMAS bergerak dalam kegiatan sosial dan pengabdian kepada masyarakat. Menjembatani organisasi dengan lingkungan sekitar melalui aksi nyata yang berdampak dan bermakna.
+          -
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
     <!-- KREASI & INOVASI -->
     <div class="divisi-card reveal" style="transition-delay:0.5s">
       <div class="divisi-banner kreasi">
-        <div class="divisi-icon-wrap">💡</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Kreatifitas & Inovasi</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Himasta pride</div>
         <div class="divisi-desc">
-          Divisi KREASI & INOVASI menjadi motor penggerak ide-ide segar dan terobosan baru. Mendorong setiap anggota untuk berpikir kreatif, berinovasi, dan menghasilkan karya yang berbeda.
+          -
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
     <!-- OSM -->
     <div class="divisi-card reveal" style="transition-delay:0.6s">
       <div class="divisi-banner osm">
-        <div class="divisi-icon-wrap">🏆</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">OSM</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Majalah himasta</div>
         <div class="divisi-desc">
-          Divisi OSM berfokus pada pengembangan prestasi dan keunggulan akademik maupun non-akademik. Memfasilitasi anggota untuk berkompetisi dan meraih pencapaian terbaik di berbagai bidang.
+          -
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
     <!-- HUAL -->
     <div class="divisi-card reveal" style="transition-delay:0.7s">
       <div class="divisi-banner hual">
-        <div class="divisi-icon-wrap">🤝</div>
+        <div class="divisi-icon-wrap"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
       </div>
       <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">HUAL</div>
+        <div class="divisi-tag">Program Kerja</div>
+        <div class="divisi-name">Press release</div>
         <div class="divisi-desc">
-          Divisi HUAL mengelola hubungan alumni dan membangun jejaring yang kuat antara mahasiswa aktif dengan alumni. Memperluas koneksi dan membuka peluang kolaborasi lintas generasi.
+          -
         </div>
-        <span class="divisi-pill">Lihat Tim →</span>
+        <span class="divisi-pill">Lihat Kinerja →</span>
       </div>
     </div>
 
-    <!-- KOMINFO -->
-    <div class="divisi-card reveal" style="transition-delay:0.8s">
-      <div class="divisi-banner kominfo">
-        <div class="divisi-icon-wrap">📡</div>
-      </div>
-      <div class="divisi-info">
-        <div class="divisi-tag">Divisi</div>
-        <div class="divisi-name">Komunikasi & Informasi</div>
-        <div class="divisi-desc">
-          Divisi KOMINFO bertanggung jawab atas penyebaran informasi, manajemen media sosial, dan komunikasi internal maupun eksternal organisasi. Menjaga aliran informasi tetap cepat, tepat, dan terukur.
-        </div>
-        <span class="divisi-pill">Lihat Tim →</span>
-      </div>
-    </div>
 
   </div>
 </section>
+
 <footer>
-  <div class="footer-brand">DEPARTEMEN <span>STATISTIKA</span></div>
+  <div class="footer-brand">HIMPUNAN <span>STATISTIKA</span></div>
   <ul class="footer-links">
     <li><a href="#about">About Us</a></li>
-    <li><a href="#">Article</a></li>
     <li><a href="#">Media</a></li>
     <li><a href="#divisi">Teams</a></li>
   </ul>
-  <div class="footer-copy">© 2026 DEPARTEMEN STATISTIKA · Made with ♥</div>
+  <div class="footer-copy">© 2026 HIMPUNAN STATISTIKA </div>
 </footer>
 
 <script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  // Close menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('hamburger');
+    const nav = document.querySelector('.mobile-nav');
+    if (!nav.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
+
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
