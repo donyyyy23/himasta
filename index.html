@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>HIMPUNAN STATISTIKA</title>
+<title>HIMPUNAN MAHASISWA STATISTIKA</title>
+<link rel="icon" type="logo himasta" href="LOGO HIMASTA.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -160,10 +161,10 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 400;
-    background: rgba(13,13,20,0.96);
-    backdrop-filter: blur(20px);
+    background: transparent;
+    backdrop-filter: none;
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: none;
     padding: 0 16px;
     height: 60px;
     align-items: center;
@@ -178,7 +179,7 @@
   .mobile-logo img { height: 34px; width: auto; }
   .mobile-logo-divider {
     width: 1px; height: 18px;
-    background: rgba(255,255,255,0.15);
+    background: none;
   }
 
   .hamburger {
@@ -207,9 +208,9 @@
     position: fixed;
     top: 60px; left: 0; right: 0;
     z-index: 399;
-    background: rgba(13,13,20,0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background:none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(255,255,255,0.07);
     padding: 16px;
     flex-direction: column;
@@ -271,15 +272,19 @@
     animation: fadeUp 0.9s ease both;
   }
 
-  .hero-sub {
-    font-size: clamp(14px, 3.5vw, 18px);
-    font-weight: 400;
-    color: rgba(255,255,255,0.85);
-    margin-top: 16px;
-    max-width: 480px;
-    line-height: 1.5;
-    animation: fadeUp 0.9s 0.2s ease both;
-  }
+ .hero-sub {
+  font-size: clamp(14px, 3.5vw, 18px);
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin-top: 16px;
+  max-width: 480px;
+  line-height: 1.5;
+  animation: fadeUp 0.9s 0.2s ease both;
+
+  text-align: center;   /* bikin teksnya center */
+  margin-left: auto;    /* center container */
+  margin-right: auto;   /* center container */
+}
 
   .hero-socials {
     display: flex;
@@ -627,7 +632,7 @@
     /* Hide desktop nav, show mobile */
     nav { display: none !important; }
     .mobile-nav { display: flex; }
-
+    .corner-logos { display: none; }
     /* Hero */
     #hero { padding: 80px 20px 40px; min-height: 100svh; }
     .hero-title { letter-spacing: 1px; }
@@ -705,13 +710,17 @@
 <body>
 <!-- ── CORNER LOGOS (Fixed, pojok kiri atas) ── -->
 <div class="corner-logos">
-  <img src="LOGO HIMASTA.png" alt="Logo Himasta">
+  <img src="LOGO USK.png" alt="Logo Himasta">
   <div class="logo-sep"></div>
-  <img src="LOGO USK.png" alt="Logo USK">
+  <img src="LOGO HIMASTA.png" alt="Logo USK">
 </div>
 <!-- ── MOBILE NAV ── -->
 <div class="mobile-nav">
   <div class="mobile-logo">
+    <img src="LOGO USK.png" alt="USK">
+    <div class="mobile-logo-divider"></div>
+    <img src="LOGO HIMASTA.png" alt="Himasta">
+    <div class="mobile-logo-divider"></div>
     <img src="Kabinet_warna.png" alt="Visionary">
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -744,7 +753,7 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 class="hero-title">HIMPUNAN STATISTIKA</h1>
+    <h1 class="hero-title">HIMPUNAN MAHASISWA STATISTIKA</h1>
     <p class="hero-sub">KABINET VISIONARY</p>
     <div class="hero-socials">
       <a href="https://www.instagram.com/himasta.fmipausk/" class="social-link">
@@ -771,6 +780,18 @@
         </div>
         LinkedIn
       </a>
+      <a href=" https://www.facebook.com/HimastaFMIPAUSK?mibextid=wwXIfr&mibextid=wwXIfr" class="social-link">
+        <div class="social-icon">
+          <img src="2.png" alt="LinkedIn">
+        </div>
+        facebook
+       </a>
+      <a href="https://x.com/himastafmipausk" class="social-link">
+        <div class="social-icon">
+          <img src="logo x.png" alt="LinkedIn">
+        </div>
+        X
+      </a>
     </div>
   </div>
 </section>
@@ -783,24 +804,24 @@
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Kesekretariatan</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">Sosial Kemasyarakatan</div>
+    <div class="ticker-item">Sosial & Masyarakat </div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">OSM</div>
+    <div class="ticker-item">Optimalisasi Sumberdaya Mahasiswa</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">HUAL</div>
+    <div class="ticker-item">Hubungan Antar Lembaga</div>
     <div class="ticker-item">✦</div>
     <!-- duplicate for seamless loop -->
     <div class="ticker-item">Komunikasi & Informasi</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">Sains & Statistika</div>
+    <div class="ticker-item">Scientific Statistics</div>
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Kesekretariatan</div>
     <div class="ticker-item">✦</div>
     <div class="ticker-item">Sosial Kemasyarakatan</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">OSM</div>
+    <div class="ticker-item"> Kreativitas & Inovasi</div>
     <div class="ticker-item">✦</div>
-    <div class="ticker-item">HUAL</div>
+    <div class="ticker-item">Komunikasi & Informasi</div>
     <div class="ticker-item">✦</div>
   </div>
 </div>
@@ -818,19 +839,16 @@
   <div class="about-right reveal" style="transition-delay:0.15s">
     <div class="service-card">
       <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
-      <div class="card-arrow">›</div>
       <div class="card-title">Pandangan ke depan</div>
       <div class="card-desc">Kemampuan untuk mengidentifikasi peluang, merumuskan arah, dan menetapkan visi yang jelas sebagai landasan pergerakan.</div>
     </div>
     <div class="service-card">
       <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
-      <div class="card-arrow">›</div>
       <div class="card-title">Keberanian untuk berinovasi</div>
       <div class="card-desc">Komitmen untuk menghadirkan pembaruan, mengambil pendekatan yang berbeda, serta berani keluar dari pola konvensional.</div>
     </div>
     <div class="service-card">
       <div class="card-icon"><img src="Kabinet_putih.png" style="width:50px;height:50px;object-fit:contain;"></div>
-      <div class="card-arrow">›</div>
       <div class="card-title">Aksi yang berdampak</div>
       <div class="card-desc">Perwujudan visi melalui langkah nyata yang terukur, sistematis, dan berorientasi pada hasil yang berkelanjutan.</div>
     </div>
@@ -957,11 +975,11 @@
 </section>
 
 <footer>
-  <div class="footer-brand">HIMPUNAN <span>STATISTIKA</span></div>
+  <div class="footer-brand">HIMPUNAN <span>MAHASISWA <span>STATISTIKA</span></div>
   <ul class="footer-links">
     <li><a href="#about">About Us</a></li>
     <li><a href="#">Media</a></li>
-    <li><a href="#divisi">Teams</a></li>
+    <li><a href="#divisi">Program Kerja</a></li>
   </ul>
   <div class="footer-copy">© 2026 HIMPUNAN STATISTIKA </div>
 </footer>
